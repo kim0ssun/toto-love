@@ -150,7 +150,7 @@ export default props => {
             <Card className={classes.card}>
               <CardActionArea>
                 <Box 
-                  fontSize={{xs:'h7.fontSize', md: 'h6.fontSize'}}
+                  fontSize={{xs:'h7.fontSize', sm: 'h6.fontSize'}}
                   p={2}
                   color="white"
                   textAlign="center"
@@ -177,7 +177,7 @@ export default props => {
             <Card className={classes.card}>
               <CardActionArea>
                 <Box 
-                  fontSize={{xs:'h7.fontSize', md: 'h6.fontSize'}}
+                  fontSize={{xs:'h7.fontSize', sm: 'h6.fontSize'}}
                   p={2}
                   color="white"
                   textAlign="center"
@@ -204,7 +204,7 @@ export default props => {
             <Card className={classes.card}>
               <CardActionArea>
                 <Box 
-                  fontSize={{xs:'h7.fontSize', md: 'h6.fontSize'}}
+                  fontSize={{xs:'h7.fontSize', sm: 'h6.fontSize'}}
                   p={2}
                   color="white"
                   textAlign="center"
@@ -231,7 +231,7 @@ export default props => {
             <Card className={classes.card}>
               <CardActionArea>
                 <Box 
-                  fontSize={{xs:'h7.fontSize', md: 'h6.fontSize'}}
+                  fontSize={{xs:'h7.fontSize', sm: 'h6.fontSize'}}
                   p={2}
                   color="white"
                   textAlign="center"
@@ -258,7 +258,7 @@ export default props => {
             <Card className={classes.card}>
               <CardActionArea>
                  <Box 
-                  fontSize={{xs:'h7.fontSize', md: 'h6.fontSize'}}
+                  fontSize={{xs:'h7.fontSize', sm: 'h6.fontSize'}}
                   p={2}
                   color="white"
                   textAlign="center"
@@ -285,7 +285,7 @@ export default props => {
             <Card className={classes.card}>
               <CardActionArea> 
                  <Box 
-                  fontSize={{xs:'h7.fontSize', md: 'h6.fontSize'}}
+                  fontSize={{xs:'h7.fontSize', sm: 'h6.fontSize'}}
                   p={2}
                   color="white"
                   textAlign="center"
@@ -312,7 +312,7 @@ export default props => {
             <Card className={classes.card}>
               <CardActionArea>  
                  <Box 
-                  fontSize={{xs:'h7.fontSize', md: 'h6.fontSize'}}
+                  fontSize={{xs:'h7.fontSize', sm: 'h6.fontSize'}}
                   p={2}
                   color="white"
                   textAlign="center"
@@ -339,7 +339,7 @@ export default props => {
             <Card className={classes.card}>
               <CardActionArea>
                  <Box 
-                  fontSize={{xs:'h7.fontSize', md: 'h6.fontSize'}}
+                  fontSize={{xs:'h7.fontSize', sm: 'h6.fontSize'}}
                   p={2}
                   color="white"
                   textAlign="center"
