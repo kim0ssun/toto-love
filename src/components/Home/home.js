@@ -26,8 +26,9 @@ import banner4 from '../../images/banner4.gif';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
-    padding: "10px 20px",
-    backgroundColor: "#000" 
+    // padding: "10px 20px",
+    backgroundColor: "#000",
+    marginTop: '-70px' 
   },
   // paper: {
   //   padding: theme.spacing(2),
@@ -35,7 +36,7 @@ const useStyles = makeStyles(theme => ({
   //   color: theme.palette.text.secondary,
   // },
   container: {
-    marginTop: 10,
+    marginTop: 50,
   },
   banner: {
     width: "100%",
@@ -101,8 +102,12 @@ export default props => {
 
   return (
     <div className={classes.root}>
+      <Box 
+        px={{xs: 3, sm: 10, md: 18}}
+        pt={{xs: 3}}
+      >
       <Grid container spacing={2}  className={classes.container}>
-          <Grid item xs={12} sm={6} md={6}>
+          <Grid item xs={12} md={6}>
             <Card className={classes.card}>
               <CardActionArea>
                 <CardMedia
@@ -113,7 +118,7 @@ export default props => {
               </CardActionArea>
             </Card> 
           </Grid>
-          <Grid item xs={12} sm={6} md={6}>
+          <Grid item xs={12} md={6}>
             <Card className={classes.card}>
               <CardActionArea>           
                 <CardMedia
@@ -125,7 +130,7 @@ export default props => {
             </Card> 
           </Grid>
         </Grid>
-      <Grid container spacing={1} className={classes.container}>
+      <Grid container spacing={1} >
         <Grid item xs={12}>
           <Box 
             color="white"
@@ -403,7 +408,7 @@ export default props => {
             업체이용을 한다는 것이 현실적으로 어려운 부분들이 많기 때문입니다.</p>
             </Grid>
         </Grid>
-
+        </Box>
 
        
     </div>
