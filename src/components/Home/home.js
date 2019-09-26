@@ -103,7 +103,7 @@ export default props => {
   return (
     <div className={classes.root}>
       <Box 
-        px={{xs: 3, sm: 10, md: 18}}
+        px={{xs: 3, sm: 8, md: 15}}
         pt={{xs: 3}}
       >
       <Grid container spacing={2}  className={classes.container}>

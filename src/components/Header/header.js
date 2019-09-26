@@ -61,7 +61,7 @@ export default props => {
             <Link className={classes.link}  to="/">놀이터</Link>
             <Link className={classes.link}  to="/blog" href="" >토토사이트</Link>
             <Link className={classes.link}  to="/blog">사설토토</Link>
-            <External className={classes.link}  href={'https://www.naver.com'} target="_blank">네이버</External>
+            {/* <External className={classes.link}  href={'https://www.naver.com'} target="_blank">네이버</External> */}
           </Hidden>
           
         </Toolbar>
