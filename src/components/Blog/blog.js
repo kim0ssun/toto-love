@@ -11,6 +11,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import { CardHeader } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
+import Pagination from 'material-ui-flat-pagination';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -31,15 +32,30 @@ const useStyles = makeStyles(theme => ({
     backgroundColor: "#222",
     color: '#fff',
     maxHeight: '100%'
-  }
+  },
+  pageRoot: {
+    backgroundColor: '#000',
+    padding: 25,
+    textAlign: 'center'
+  },
+  rootCurrent: {
+    border: '1px solid #777',
+    borderRadius: '50%',
+    
+  }, 
+  rootEllipsis: {
+    color: '#fff',
+    
+  },
 
 }));
 
 const db = firebase.firestore();
-const storiesRef = db.collection('stories');
+const storiesRef = db.collection('stories').orderBy('timestamp', 'desc').limit(3);
 
 export default props => {
   const [stories , setStories] = useState([]); 
+  const [offset, setOffset] = useState(1);
   const classes = useStyles();
 
   useEffect(() => {
@@ -59,62 +75,68 @@ export default props => {
   return (
     <div className={classes.root}>
       <Box
-        
-         px={{xs: 0, sm: 8, md: 15}}
-         pt={{xs: 3}}
+         px={{xs: 0, sm: 5, md: 15}}
+         pt={{xs: 0, sm: 1}}
         //  styles={{background: 'black'}}
       >
-        
-          {stories.map((story) => {
-            return (
-              
-                <Card className={classes.card}>
-                  <Box 
-                    display='flex'
-                    justifyContent="center"
-                    alignItems="center"
-                    flexDirection={{xs: 'column', lg: 'row'}}
-                    width="100%"
-                  >
+        {stories.map((story) => {
+          return (
+            <Card className={classes.card} key={story.title}>
+              <Box 
+                display='flex'
+                justifyContent="center"
+                alignItems="center"
+                flexDirection={{xs: 'column', lg: 'row'}}
+                width="100%"
+              >
+                <Box 
+                  width={{xs: '100%', lg: '30%'}}
+                >
+                  <CardMedia 
+                    className={classes.image}
+                    image={story.main_picture}
+                    title=""
+                  />     
+                </Box>
+                <Box 
+                  width={{ xs: '100%', lg: '70%'}}
+                  height={'auto'}   
+                >
+                  <CardContent className={classes.content}>
                     <Box 
-                      width={{xs: '100%', lg: '30%'}}
+                      display='flex'
+                      flexDirection='column'
+                      justifyContent="center"
+                      alignItems="center"
+                      p={{xs:1, sm:2, md:3, lg:4, xl:5}}   
                     >
-                      <CardMedia 
-                        className={classes.image}
-                        image={story.main_picture}
-                        title=""
-                      />
-                      
+                        <Box fontSize={{xs: 16, md: 20}} textAlign="center" mb={2}>{story.title}</Box>
+                        <Box  fontSize={{xs: 13, md: 16}}>{story.content}</Box>
                     </Box>
-                    <Box 
-                      width={{ xs: '100%', lg: '70%'}}
-                      height={'auto'}
-                      
-                    >
-                      <CardContent className={classes.content}>
-                        <Box 
-                          display='flex'
-                          flexDirection='column'
-                          justifyContent="center"
-                          alignItems="center"
-                          p={{xs:1, sm:2, md:3, lg:4, xl:5}}
-                          
-                        >
-                          {/* <Box > */}
-                            {/* <Typography variant="h6" align="center">사설토토</Typography> */}
-                            <Box fontSize={{xs: 16, md: 20}} textAlign="center" mb={2}>{story.title}</Box>
-                            <Box paragraph fontSize={{xs: 14, md: 16}}>{story.content}</Box>
-                          {/* </Box> */}
-                        </Box>
-                      </CardContent>
-                    </Box>
-                  </Box>
-                </Card>
-                
-        
-            )
-          } )}
-         
+                  </CardContent>
+                </Box>
+              </Box>
+            </Card>
+          )
+        } )} 
+        <Box 
+          color="black"
+          style={{backgroundColor: 'white'}}
+          flexDirection="row"
+        >
+          <Pagination  
+            reduced
+            offset={offset}
+            limit={3}
+            classes={{
+              root: classes.pageRoot,
+              rootCurrent: classes.rootCurrent,
+              rootEllipsis: classes.rootEllipsis
+            }}
+            total={8}
+            // onClick={(e, offset) => handleClick(offset)}
+          />
+        </Box>
       </Box>   
     </div>
     
