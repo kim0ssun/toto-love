@@ -51,11 +51,12 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const db = firebase.firestore();
-const storiesRef = db.collection('stories').orderBy('timestamp', 'desc').limit(3);
+const storiesRef = db.collection('stories').orderBy('timestamp', 'desc').limit(100);
 
 export default props => {
   const [stories , setStories] = useState([]); 
-  const [offset, setOffset] = useState(1);
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(3);
   const classes = useStyles();
 
   useEffect(() => {
@@ -72,6 +73,10 @@ export default props => {
     .catch(err => console.log(err))
   }, []);
 
+  const handleClick = (offset) => {
+    setOffset(offset);
+  }
+
   return (
     <div className={classes.root}>
       <Box
@@ -79,7 +84,7 @@ export default props => {
          pt={{xs: 0, sm: 1}}
         //  styles={{background: 'black'}}
       >
-        {stories.map((story) => {
+        {stories.slice( offset, offset + limit ).map((story) => {
           return (
             <Card className={classes.card} key={story.title}>
               <Box 
@@ -127,14 +132,14 @@ export default props => {
           <Pagination  
             reduced
             offset={offset}
-            limit={3}
+            limit={limit}
             classes={{
               root: classes.pageRoot,
               rootCurrent: classes.rootCurrent,
               rootEllipsis: classes.rootEllipsis
             }}
-            total={8}
-            // onClick={(e, offset) => handleClick(offset)}
+            total={stories.length}
+            onClick={(e, offset) => handleClick(offset)}
           />
         </Box>
       </Box>   
