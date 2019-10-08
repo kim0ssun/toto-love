@@ -58,9 +58,9 @@ export default props => {
             <Link to="/" className={classes.link} >토토사랑</Link>
           </Typography>
           <Hidden xsDown>
-            <Link className={classes.link}  to="/">놀이터</Link>
-            <Link className={classes.link}  to="/blog" href="" >토토사이트</Link>
-            <Link className={classes.link}  to="/blog">사설토토</Link>
+            <Link className={classes.link}  to="/">사설토토</Link>
+            <Link className={classes.link}  to="/blog" href="" >카지노</Link>
+            <Link className={classes.link}  to="/blog">뉴스</Link>
             {/* <External className={classes.link}  href={'https://www.naver.com'} target="_blank">네이버</External> */}
           </Hidden>
           
