@@ -13,6 +13,7 @@ import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import Link from '@material-ui/core/Link';
 import { DialogActions, DialogContent } from '@material-ui/core';
+import { width } from '@material-ui/system'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -81,7 +82,7 @@ const useStyles = makeStyles(theme => ({
     padding: 30
   },
   dialogCard: {
-    width: 450,
+    width: 400,
     
   },
   dialogImage: {
@@ -156,25 +157,34 @@ export default props => {
           onClose={handleClose}
           className={classes.dialog}
           >
-          <DialogContent className={classes.dialogCard}>
-            <Card >
-              <CardMedia 
-                className={classes.dialogImage}
-                image={(sub_url)}
-                title=""
-              />
-              <CardContent>
-                <Typography variant="body1" component="p">
-                  {sub_content.split('\\n').map((line, i) => {
-                    return (<Box align='center' key={i} pt={0}>{line}</Box>)
-                  })}
-                </Typography>
-                <Box display='flex' flexDirection='column' justifyContent='center' pt={3}      alignItems='center'>
-                  <Button variant='contained' color='primary' href={link} >가입하기</Button>
-                </Box>
-              </CardContent>
-            </Card>
-          </DialogContent>
+          <Box
+            width={{xs:260, sm:400, md:550}}
+          >
+            <DialogContent >
+              <Card >
+                <CardMedia 
+                  className={classes.dialogImage}
+                  image={(sub_url)}
+                  title=""
+                />
+                <CardContent>
+                  <Typography variant="body1" component="p">
+                    {sub_content.split('\\n').map((line, i) => {
+                      return (<Box 
+                        align='center' 
+                        key={i} 
+                        pt={0}
+                        fontSize={{xs: 13, sm: 16, md: 20}}  
+                        >{line}</Box>)
+                    })}
+                  </Typography>
+                  <Box display='flex' flexDirection='column' justifyContent='center' pt={3}      alignItems='center'>
+                    <Button variant='contained' size='large' color='primary' href={link} >가입하기</Button>
+                  </Box>
+                </CardContent>
+              </Card>
+            </DialogContent>
+          </Box>
           <DialogActions >
           </DialogActions>
 
