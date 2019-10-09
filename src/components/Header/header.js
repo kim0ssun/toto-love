@@ -73,13 +73,13 @@ export default props => {
               >
         <List style={{backgroundColor: '#444'}} onClick={() => setOpen(false)}>
           <ListItem button key={1}>
-            <Link className={classes.link} color="inherit" to="/">놀이터</Link>
+            <Link className={classes.link} color="inherit" to="/">사설토토</Link>
           </ListItem>
           <ListItem button key={2} >
-            <Link className={classes.link} color="inherit" to="/blog">토토사이트</Link>
+            <Link className={classes.link} color="inherit" to="/blog">카지노</Link>
           </ListItem>
           <ListItem button key={3} >
-            <Link className={classes.link} color="inherit" to="/blog">사설토토</Link>
+            <Link className={classes.link} color="inherit" to="/blog">뉴스</Link>
           </ListItem>
         </List>
       </Drawer>
