@@ -59,8 +59,8 @@ export default props => {
           </Typography>
           <Hidden xsDown>
             <Link className={classes.link}  to="/">사설토토</Link>
-            <Link className={classes.link}  to="/blog" href="" >카지노</Link>
-            <Link className={classes.link}  to="/blog">뉴스</Link>
+            <Link className={classes.link}  to="/blog/1" href="" >카지노</Link>
+            <Link className={classes.link}  to="/blog/1">뉴스</Link>
             {/* <External className={classes.link}  href={'https://www.naver.com'} target="_blank">네이버</External> */}
           </Hidden>
           
@@ -76,10 +76,10 @@ export default props => {
             <Link className={classes.link} color="inherit" to="/">사설토토</Link>
           </ListItem>
           <ListItem button key={2} >
-            <Link className={classes.link} color="inherit" to="/blog">카지노</Link>
+            <Link className={classes.link} color="inherit" to="/blog/1">카지노</Link>
           </ListItem>
           <ListItem button key={3} >
-            <Link className={classes.link} color="inherit" to="/blog">뉴스</Link>
+            <Link className={classes.link} color="inherit" to="/blog/1">뉴스</Link>
           </ListItem>
         </List>
       </Drawer>

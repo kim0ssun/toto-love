@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import firebase from '../../firebase';
 import { makeStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
-import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import { CardHeader } from '@material-ui/core';
-import Typography from '@material-ui/core/Typography';
 import Pagination from 'material-ui-flat-pagination';
+import { useHistory, useParams } from 'react-router';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -26,12 +22,18 @@ const useStyles = makeStyles(theme => ({
     border: '1px solid #444',
     height: '100%',
     backgroundColor: '#222',
-    marginBottom: 5
+    marginBottom: 5,
+    '&:hover': {
+      backgroundColor: '#444',
+      cursor: 'pointer'
+    }
   },
+  
   content: {
-    backgroundColor: "#222",
+    backgroundColor: 'rgba(255,255,255,0.0)',
     color: '#fff',
-    maxHeight: '100%'
+    maxHeight: '100%',
+   
   },
   pageRoot: {
     backgroundColor: '#000',
@@ -58,7 +60,9 @@ export default props => {
   const [offset, setOffset] = useState(0);
   const [limit, setLimit] = useState(3);
   const classes = useStyles();
-
+  let history = useHistory();
+  let { page } = useParams();
+  
   useEffect(() => {
     const story = [];
     storiesRef.get().then(snapshot => {
@@ -68,13 +72,22 @@ export default props => {
     })
     .then(() => {
       setStories(story);
+      setOffset(limit*(page-1));
       console.log(story);
     })
     .catch(err => console.log(err))
-  }, []);
+  }, [page]);
 
   const handleClick = (offset) => {
+    console.log('offset => '+ offset);
+    const page = offset / limit + 1;
     setOffset(offset);
+    history.push(`/blog/${page}`);
+  }
+
+  const handleDetailClick = (e, id) => {
+    console.log(`detail click => ${id}`);
+    history.push(`/blog/detail/${id}`);
   }
 
   return (
@@ -86,7 +99,8 @@ export default props => {
       >
         {stories.slice( offset, offset + limit ).map((story) => {
           return (
-            <Card className={classes.card} key={story.title}>
+            <Card className={classes.card} key={story.title}  >
+              <CardActionArea onClick={(e) => handleDetailClick(e, story.id)} >
               <Box 
                 display='flex'
                 justifyContent="center"
@@ -116,11 +130,12 @@ export default props => {
                       p={{xs:1, sm:2, md:3, lg:4, xl:5}}   
                     >
                         <Box fontSize={{xs: 16, md: 20}} textAlign="center" mb={2}>{story.title}</Box>
-                        <Box  fontSize={{xs: 13, md: 16}}>{story.content}</Box>
+                        <Box fontSize={{xs: 13, md: 16}}>{story.content}</Box>
                     </Box>
                   </CardContent>
                 </Box>
               </Box>
+              </CardActionArea>
             </Card>
           )
         } )} 
